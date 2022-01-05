@@ -1,20 +1,22 @@
 const MyTable = ({ values }) => {
+  console.log("verificar context");
+  console.log(values);
   return (
     <table>
       <thead>
         <tr>
+          <th>Categoria</th>
+          <th>Descricao</th>
           <th>Nome</th>
-          <th>Email</th>
-          <th>Utilizador</th>
         </tr>
       </thead>
       <tbody>
-        {values.map((produto, index) => {
+        {values.map((produto, id) => {
           return (
-            <tr key={index}>
-              <td>{produto.nome}</td>
+            <tr key={id}>
+              <td>{produto.categoria}</td>
               <td>{produto.descricao}</td>
-              <td>{produto.preco}</td>
+              <td>{produto.nome}</td>
             </tr>
           );
         })}

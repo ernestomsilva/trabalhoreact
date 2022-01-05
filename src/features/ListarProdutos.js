@@ -1,38 +1,66 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ProductsContext } from "../products-context";
 import requests from "../requests";
+import MyTable from "../Layout/MyTable";
 import ListaProdutos from "./ListaProdutos";
 
 const ListarProdutos = () => {
   const { listProducts } = requests;
   console.log("button");
+
+  const [categoria, setCategoria] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [nome, setNome] = useState("");
+  
   const [products, setProducts] = useState([]);
-  const handleListarProdutos = async () => {
-    const result = await listProducts();
-    if (result) {
-      //console.log(result);
-      //sessionStorage.setItem("listaProdutos", result);
-      setProducts(result ?? []) ;
-      //console.log("contexto");
-      //console.log(products);
-    }
-  };
+  
+  useEffect(() => {
+    const fetchproducts = async () => {
+      const products = await listProducts();
+      setProducts(products ?? []);
+    };
+    fetchproducts();
+  }, [listProducts]);
+
+  
   return (
     <>
-      <button onClick={handleListarProdutos}>Listar Produtos</button>
-     
+      <ProductsContext.Provider value={{ products, setProducts }}>
+        <h2>Lista de Produtos</h2>
+        <input
+          placeholder={"Categoria"}
+          value={categoria}
+          onChange={(event) => {
+            setCategoria(event.target.value);
+          }}
+        />
+        <input
+          placeholder="Descricao"
+          value={descricao}
+          onChange={(event) => {
+            setDescricao(event.target.value);
+          }}
+        />
+        <input
+          placeholder={"Nome"}
+          value={nome}
+          onChange={(event) => {
+            setNome(event.target.value);
+          }}
+        />
+        <button>Listar Produtos</button>
+        
+      </ProductsContext.Provider>
     </>
   );
 };
-
 
 const MainPage = () => {
   const [products, setProducts] = useState([]);
 
   return (
     <ProductsContext.Provider value={{ products, setProducts }}>
-      <ListarProdutos />
-      
+      <MyTable values={products}></MyTable>
     </ProductsContext.Provider>
   );
 };
