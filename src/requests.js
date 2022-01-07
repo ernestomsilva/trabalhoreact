@@ -1,6 +1,6 @@
 const url = process.env.REACT_APP_URL;
 
-const makeRequest = async (url, method = "GET", body = null) => {
+const makeRequest = async (url, method = "GET" , body = null) => {
   const token = sessionStorage.getItem("token");
   //console.log(token);
   const options = {
@@ -13,7 +13,7 @@ const makeRequest = async (url, method = "GET", body = null) => {
   };
 
   
-  if (method === "GET" || method === "DELETE" ) {
+  if (method === "GET"  ) {
     delete options.body;
   }
   try {
@@ -50,15 +50,20 @@ const requests = {
   updateUser: async (id, user) => {
     return makeRequest(`${url}/${id}`, "PUT", user);
   },
-  //apagar utilizador
-  deleteUser: async (id) => {
-    return makeRequest(`${url}/${id}`, "DELETE");
+  //apagar produto
+  eliminarProduct: async (id) => {
+    return makeRequest(`${url}produto/${id}`, "DELETE");
   },
   //criar produto
   createProdut: async (produto) => {
     console.log(makeRequest.options)
   return makeRequest(`${url}produto`, "POST", produto);
    },
+ //atualizar Produtos
+ updateProdut: async (produto) => {
+  console.log(makeRequest.options)
+  return makeRequest(`${url}produto/${produto.indice}`, "PUT",produto);
+ },
 };
 
 export default requests;

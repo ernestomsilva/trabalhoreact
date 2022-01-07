@@ -1,12 +1,10 @@
 import { useContext, useState } from "react";
-import { UsersContext } from "../user-context";
 import requests from "../requests";
 
 const RegistarProduto = () => {
-    const { users, setUsers } = useContext(UsersContext);
+    
     const [categoria, setCategoria] = useState("");
     const [descricao, setDescricao] = useState("");
-    const [id, setId] = useState("");
     const [imagemUrl, setimagemUrl] = useState("");
     const [nome, setNome] = useState("");
     const [preco, setPreco] = useState("");
@@ -14,15 +12,13 @@ const RegistarProduto = () => {
   
     const handleAdicionaProduto = async () => {
       const produto = { categoria: categoria, descricao: descricao,
-        id: id, imagemUrl: imagemUrl, nome: nome, preco: preco  };
+        imagemUrl: imagemUrl, nome: nome, preco: preco  };
      
       const result = await createProdut(produto);
       if (result) {
        
         console.log(JSON.stringify(result));
-        //sessionStorage.setItem("token",JSON.stringify(result) )
-
-      
+              
       }
     };
     return (
@@ -44,14 +40,7 @@ const RegistarProduto = () => {
           }}
           
         />
-           <input
-          placeholder={"Id"}
-          value={id}
-          onChange={(event) => {
-            setId(event.target.value);
-          }}         
           
-        />
         <input
           placeholder={"imageUrl"}
           value={imagemUrl}

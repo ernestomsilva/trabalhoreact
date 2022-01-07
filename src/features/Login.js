@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { UsersContext } from "../user-context";
 import requests from "../requests";
 import { ProductsContext } from "../products-context";
-import ListaProdutos from "./ListaProdutos";
 const { loginUser } = requests;
 
 const LoginUser = () => {

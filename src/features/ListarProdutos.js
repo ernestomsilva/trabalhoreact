@@ -2,22 +2,35 @@ import { useContext, useState, useEffect } from "react";
 import { ProductsContext } from "../products-context";
 import requests from "../requests";
 import MyTable from "../Layout/MyTable";
-import ListaProdutos from "./ListaProdutos";
 
+import AtualizarProduto from "./AtualizarProduto";
 const ListarProdutos = () => {
   const { listProducts } = requests;
+  const { eliminarProduct } = requests;
   console.log("button");
 
   const [categoria, setCategoria] = useState("");
   const [descricao, setDescricao] = useState("");
   const [nome, setNome] = useState("");
-  
+  const [indiceEliminar, setIndiceEliminar] = useState("");
   const [products, setProducts] = useState([]);
+
+  const handleIndiceEliminar = async () => {
+    const result = await eliminarProduct(indiceEliminar);
+    if (result) {
+     
+      console.log(result);
+            
+    }
+  };
+
+
   
   useEffect(() => {
     const fetchproducts = async () => {
       const products = await listProducts();
       setProducts(products ?? []);
+      console.log(products);
     };
     fetchproducts();
   }, [listProducts]);
@@ -26,8 +39,9 @@ const ListarProdutos = () => {
   return (
     <>
       <ProductsContext.Provider value={{ products, setProducts }}>
+
         <h2>Lista de Produtos</h2>
-        <input
+        {/* <input
           placeholder={"Categoria"}
           value={categoria}
           onChange={(event) => {
@@ -47,10 +61,29 @@ const ListarProdutos = () => {
           onChange={(event) => {
             setNome(event.target.value);
           }}
-        />
-        <button>Listar Produtos</button>
+        /> */}
+
         
+        <button onClick={handleIndiceEliminar}>Listar Produtos</button>
+
+        <MyTable values={products}></MyTable>
+        <input
+          placeholder="indice a eliminar"
+          value={indiceEliminar}
+          onChange={(event) => {
+          setIndiceEliminar(event.target.value);
+            
+          
+          }}
+        />
+
+        <button onClick={handleIndiceEliminar}>Eliminar Produto</button>
+
+       
+
       </ProductsContext.Provider>
+
+      <AtualizarProduto></AtualizarProduto>
     </>
   );
 };
