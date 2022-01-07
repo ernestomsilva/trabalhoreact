@@ -4,6 +4,7 @@ import requests from "../requests";
 import MyTable from "../Layout/MyTable";
 
 import AtualizarProduto from "./AtualizarProduto";
+import CriarEncomenda from "./CriarEncomenda";
 const ListarProdutos = () => {
   const { listProducts } = requests;
   const { eliminarProduct } = requests;
@@ -84,6 +85,7 @@ const ListarProdutos = () => {
       </ProductsContext.Provider>
 
       <AtualizarProduto></AtualizarProduto>
+      <CriarEncomenda></CriarEncomenda>
     </>
   );
 };

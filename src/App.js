@@ -8,6 +8,8 @@ import LoginUser from "./features/Login";
 import RegistarProduto from "./features/RegistarProduto";
 import ListarProdutos from "./features/ListarProdutos";
 import AtualizarProduto from "./features/AtualizarProduto";
+import CriarEncomenda from "./features/CriarEncomenda";
+
 import { Nav } from "react-bootstrap";
 import Home from "./Home";
 

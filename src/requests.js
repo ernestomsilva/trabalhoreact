@@ -64,6 +64,12 @@ const requests = {
   console.log(makeRequest.options)
   return makeRequest(`${url}produto/${produto.indice}`, "PUT",produto);
  },
+  //Criar Encomenda
+  createEncomenda: async (encomenda) => {
+    console.log(makeRequest.options)
+    return makeRequest(`${url}encomenda`, "POST",encomenda);
+   },
+   
 };
 
 export default requests;
