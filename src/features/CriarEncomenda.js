@@ -11,14 +11,14 @@ const CriarEncomenda = () => {
       const encomenda = { produtoId: produtoId, quantidade: quantidade,
         };
      
-      const result = await createEncomenda([encomenda]);
+      const result = await createEncomenda(encomenda);
       if (result) {
        
         console.log(JSON.stringify(result));
               
       }
     };
-    
+
     return (
       <>
         <h2>Criar  Encomenda</h2>
