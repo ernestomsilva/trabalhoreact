@@ -1,0 +1,9 @@
+
+ // useEffect(() => {
+  //   const fetchproducts = async () => {
+  //     const products = await listProducts();
+  //     setProducts(products ?? []);
+  //     console.log(products);
+  //   };
+  //   fetchproducts();
+  // }, [listProducts]);

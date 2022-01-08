@@ -66,7 +66,7 @@ const RegistarProduto = () => {
           
         />
         
-        <button onClick={handleAdicionaProduto}>Registar Produto</button>
+        <button  onClick={handleAdicionaProduto}>Registar Produto</button>
       </>
     );
   };

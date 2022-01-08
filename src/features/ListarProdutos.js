@@ -2,6 +2,8 @@ import { useContext, useState, useEffect } from "react";
 import { ProductsContext } from "../products-context";
 import requests from "../requests";
 import MyTable from "../Layout/MyTable";
+import { Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import AtualizarProduto from "./AtualizarProduto";
 import CriarEncomenda from "./CriarEncomenda";
@@ -19,72 +21,39 @@ const ListarProdutos = () => {
   const handleIndiceEliminar = async () => {
     const result = await eliminarProduct(indiceEliminar);
     if (result) {
-     
       console.log(result);
-            
     }
   };
 
+  const handleListarProdutos = async () => {
+    const products = await listProducts();
+    setProducts(products ?? []);
+    console.log(products);
+  };
 
-  
-  useEffect(() => {
-    const fetchproducts = async () => {
-      const products = await listProducts();
-      setProducts(products ?? []);
-      console.log(products);
-    };
-    fetchproducts();
-  }, [listProducts]);
-
-  
   return (
     <>
       <ProductsContext.Provider value={{ products, setProducts }}>
-
         <h2>Lista de Produtos</h2>
-        {/* <input
-          placeholder={"Categoria"}
-          value={categoria}
-          onChange={(event) => {
-            setCategoria(event.target.value);
-          }}
-        />
-        <input
-          placeholder="Descricao"
-          value={descricao}
-          onChange={(event) => {
-            setDescricao(event.target.value);
-          }}
-        />
-        <input
-          placeholder={"Nome"}
-          value={nome}
-          onChange={(event) => {
-            setNome(event.target.value);
-          }}
-        /> */}
-
-        
-        <button onClick={handleIndiceEliminar}>Listar Produtos</button>
-
+        <>
+          <Button variant="primary" onClick={handleListarProdutos}>Listar Produtos
+          </Button>
+        </>
         <MyTable values={products}></MyTable>
         <input
           placeholder="indice a eliminar"
           value={indiceEliminar}
           onChange={(event) => {
-          setIndiceEliminar(event.target.value);
-            
-          
+            setIndiceEliminar(event.target.value);
           }}
         />
-
-        <button onClick={handleIndiceEliminar}>Eliminar Produto</button>
-
-       
-
+        
+        <Button variant="danger" onClick={handleIndiceEliminar}>Eliminar Produto</Button>
+        
       </ProductsContext.Provider>
 
       <AtualizarProduto></AtualizarProduto>
+
       <CriarEncomenda></CriarEncomenda>
     </>
   );

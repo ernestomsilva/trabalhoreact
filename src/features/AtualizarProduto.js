@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import requests from "../requests";
+import { Button } from "react-bootstrap";
 
 const AtualizarProduto = () => {
   const [indice, setIndice] = useState("");
@@ -73,7 +74,7 @@ const AtualizarProduto = () => {
         }}
       />
 
-      <button onClick={handleAtualizaProduto}>Atualiza Produto</button>
+      <Button variant="outline-primary" onClick={handleAtualizaProduto}>Atualiza Produto</Button>
     </>
   );
 };
