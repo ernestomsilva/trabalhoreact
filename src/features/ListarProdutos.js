@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import AtualizarProduto from "./AtualizarProduto";
 import CriarEncomenda from "./CriarEncomenda";
+import RegistarProduto from "./RegistarProduto";
 const ListarProdutos = () => {
   const { listProducts } = requests;
   const { eliminarProduct } = requests;
@@ -33,28 +34,49 @@ const ListarProdutos = () => {
 
   return (
     <>
+      <h2>Lista de Produtos</h2>
+      <br></br>
+      <br></br>
+
       <ProductsContext.Provider value={{ products, setProducts }}>
-        <h2>Lista de Produtos</h2>
         <>
-          <Button variant="primary" onClick={handleListarProdutos}>Listar Produtos
+          <Button variant="primary" onClick={handleListarProdutos}>
+            Listar Produtos
           </Button>
         </>
+        <br></br>
+        <br></br>
+        {/* componente tabela */}
         <MyTable values={products}></MyTable>
+        <br></br>
+        <br></br>
+    <RegistarProduto></RegistarProduto>
+    <br></br>
+        <br></br>
+        {/* eliminiar produto conforme o indice selecionado */}
+        <h2 style={{ color: "red" }}>Eliminar Produtos</h2>
         <input
-          placeholder="indice a eliminar"
+          placeholder="Insira Indice a Eliminar"
           value={indiceEliminar}
           onChange={(event) => {
             setIndiceEliminar(event.target.value);
           }}
         />
-        
-        <Button variant="danger" onClick={handleIndiceEliminar}>Eliminar Produto</Button>
-        
-      </ProductsContext.Provider>
-
+        <br></br>
+        <br></br>
+        {/* botão para eliminar */}
+        <Button variant="danger" onClick={handleIndiceEliminar}>
+          Eliminar Produto
+        </Button>
+        </ProductsContext.Provider>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       <AtualizarProduto></AtualizarProduto>
-
-      <CriarEncomenda></CriarEncomenda>
+      <br></br>
+        <br></br> <br></br>
+        <br></br>
     </>
   );
 };

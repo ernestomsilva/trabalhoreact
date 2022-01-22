@@ -23,7 +23,16 @@ const RegistarProduto = () => {
     };
     return (
       <>
-        <h2>Registar Novo Produto</h2>
+        <h1>Criar Novo Produto</h1>
+
+        <input
+          placeholder={"Nome"}
+          value={nome}
+          onChange={(event) => {
+            setNome(event.target.value);
+          }}  
+          
+        />
         <input
           placeholder={"Categoria"}
           value={categoria}
@@ -49,14 +58,7 @@ const RegistarProduto = () => {
           }}         
           
         />
-        <input
-          placeholder={"Nome"}
-          value={nome}
-          onChange={(event) => {
-            setNome(event.target.value);
-          }}         
-          
-        />
+       
         <input
           placeholder={"Preco"}
           value={preco}
@@ -65,7 +67,8 @@ const RegistarProduto = () => {
           }}         
           
         />
-        
+        <br>
+        </br>
         <button  onClick={handleAdicionaProduto}>Registar Produto</button>
       </>
     );

@@ -29,12 +29,19 @@ const AtualizarProduto = () => {
   return (
     <>
       <h2>Atualizar Produtos</h2>
-      
+
       <input
         placeholder={"Indice"}
         value={indice}
         onChange={(event) => {
           setIndice(event.target.value);
+        }}
+      />
+      <input
+        placeholder={"Nome"}
+        value={nome}
+        onChange={(event) => {
+          setNome(event.target.value);
         }}
       />
       <input
@@ -59,13 +66,7 @@ const AtualizarProduto = () => {
           setimagemUrl(event.target.value);
         }}
       />
-      <input
-        placeholder={"Nome"}
-        value={nome}
-        onChange={(event) => {
-          setNome(event.target.value);
-        }}
-      />
+
       <input
         placeholder={"Preco"}
         value={preco}
@@ -73,8 +74,11 @@ const AtualizarProduto = () => {
           setPreco(event.target.value);
         }}
       />
-
-      <Button variant="outline-primary" onClick={handleAtualizaProduto}>Atualiza Produto</Button>
+      <br></br>
+      <br></br>
+      <Button variant="outline-primary" onClick={handleAtualizaProduto}>
+        Atualiza Produto
+      </Button>
     </>
   );
 };

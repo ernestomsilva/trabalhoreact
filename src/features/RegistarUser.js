@@ -24,6 +24,14 @@ const CriarUtilizador = () => {
       <>
         <h2>Criar Utilizador</h2>
         <input
+          placeholder={"Username"}
+          value={username}
+          onChange={(event) => {
+            setUsername(event.target.value);
+          }}
+        />
+        
+        <input
           placeholder={"Nome"}
           value={nome}
           onChange={(event) => {
@@ -37,13 +45,9 @@ const CriarUtilizador = () => {
             setPassword(event.target.value);
           }}
         />
-        <input
-          placeholder={"Username"}
-          value={username}
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-        />
+        
+        <br>
+        </br>
         <button onClick={handleAdicionaUtilizador}>Registar User</button>
       </>
     );

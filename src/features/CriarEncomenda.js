@@ -38,7 +38,8 @@ const CriarEncomenda = () => {
           }}
           
         />
-          
+           <br></br>
+        <br></br>
              
         <button onClick={handleEncomenda}>Registar Encomenda</button>
       </>

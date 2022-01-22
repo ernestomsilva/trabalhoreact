@@ -7,6 +7,7 @@ const MyTable = ({ values }) => {
   
   const [categoria, setCategoria] = useState("");
   const [nome, setNome] = useState("");
+  const [descricao, setDescricao] = useState("");
   const [foundProducts, setFoundProducts] = useState(values); 
   console.log("aqui vai oo nome");
   console.log(nome);
@@ -28,7 +29,7 @@ const MyTable = ({ values }) => {
     setNome(keyword);
 
   };
-
+  
   return (
   
     <>
@@ -37,15 +38,16 @@ const MyTable = ({ values }) => {
         value={nome}
         onChange={filter}
         className="input"
-        placeholder="FilterNome"
+        placeholder="Pesquisa por Nome"
       />
+     
     
       <Table striped bordered responsive hover variant="dark">
         <thead>
           <tr>
             <th>Indice</th>
-            <th>Categoria</th>
             <th>Nome</th>
+            <th>Categoria</th>            
             <th>Descricao</th>
             <th>Imagem</th>
             <th>Preço</th>
@@ -57,8 +59,8 @@ const MyTable = ({ values }) => {
             return (
               <tr key={indice}>
                 <td>{produto.id}</td>
-                <td>{produto.categoria}</td>
                 <td>{produto.nome}</td>
+                <td>{produto.categoria}</td>
                 <td>{produto.descricao}</td>
                 <td>{produto.imagemUrl}</td>
                 <td>{produto.preco}</td>
