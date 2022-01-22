@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 const MyTable = ({ values }) => {
   console.log("verificar context");
   console.log(values);
-  const [keyword, setKeyword]  = useState('');
+  
   const [categoria, setCategoria] = useState("");
   const [nome, setNome] = useState("");
   const [foundProducts, setFoundProducts] = useState(values); 
@@ -12,7 +12,7 @@ const MyTable = ({ values }) => {
   console.log(nome);
  
   const filter = (e) => {
-    setKeyword( e.target.value);
+    const keyword = e.target.value;
 
     if (keyword !== '') {
       const results = values.filter((value) => {
@@ -37,9 +37,9 @@ const MyTable = ({ values }) => {
         value={nome}
         onChange={filter}
         className="input"
-        placeholder="Filter"
+        placeholder="FilterNome"
       />
-
+    
       <Table striped bordered responsive hover variant="dark">
         <thead>
           <tr>
@@ -62,7 +62,7 @@ const MyTable = ({ values }) => {
                 <td>{produto.descricao}</td>
                 <td>{produto.imagemUrl}</td>
                 <td>{produto.preco}</td>
-                <td><input type="checkbox" onclick="get"></input></td>
+                <td><input type="checkbox" onClick="get"></input></td>
               </tr>
             );
           })}
