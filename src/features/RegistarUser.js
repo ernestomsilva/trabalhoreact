@@ -15,9 +15,7 @@ const CriarUtilizador = () => {
       if (result) {
        
         console.log(JSON.stringify(result.token));
-        sessionStorage.setItem("token",result.token);
-
-      
+        sessionStorage.setItem("token",result.token);      
       }
     };
     return (

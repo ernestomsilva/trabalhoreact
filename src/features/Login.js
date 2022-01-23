@@ -29,8 +29,18 @@ const LoginUser = () => {
     }
   };
   return (
+    <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      height: "10",
+    }}
+  >
+    
     <>
       <h2>Efetuar Login de Autenticação</h2>
+      <br>
+      </br>
       <input
         placeholder={"Username"}
         value={username}
@@ -49,6 +59,7 @@ const LoginUser = () => {
       <br></br>
       <button onClick={handleLoginUser}>Entrar</button>
     </>
+    </div>
   );
 };
 export default LoginUser;

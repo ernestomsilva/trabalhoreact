@@ -42,7 +42,7 @@ function App() {
         >
           <Nav.Item>
             <Nav.Link as={Link} eventKey="/" to="/">
-              Loja do ErnieMan
+              Home
             </Nav.Link>
           </Nav.Item>
 
@@ -85,10 +85,10 @@ function App() {
               </Nav.Item>
 
               <Nav.Item>
-            <Nav.Link as={Link} eventKey="/" to="/">
-              Logout
-            </Nav.Link>
-          </Nav.Item>
+                <Nav.Link as={Link} eventKey="/logout" to="/logout">
+                  Logout
+                </Nav.Link>
+              </Nav.Item>
             </>
           )}
         </Nav>

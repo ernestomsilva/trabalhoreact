@@ -30,3 +30,70 @@
             </Accordion.Collapse>
           </Card>
         </Accordion> -->
+
+        -------------
+
+        import { useContext, useState, useEffect } from "react";
+import requests from "../requests";
+import MyTable from "../Layout/MyTable";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
+  
+
+const CriarEncomenda = () => {
+  const listProducts = requests;
+  const [produtoId, setProdutoId] = useState("");
+  const [quantidade, setQuantidade] = useState("");
+  const { createEncomenda } = requests;
+  const { products, setProducts } = useState("");
+
+  const handleEncomenda = async () => {
+    const encomenda = { produtoId: produtoId, quantidade: quantidade };
+
+    const result = await createEncomenda(encomenda);
+    if (result) {
+      console.log(JSON.stringify(result));
+    }
+  };
+
+  
+  useEffect(() => {
+   
+    const { listProducts } = requests;
+    const fetchProdutos = async () => {
+      const products = await listProducts();
+      setProducts([products] ?? []);
+    };
+    fetchProdutos();
+    console.log("contexto", products);
+  }, [listProducts]);
+
+  return (
+    <>
+      <h2>Criar Encomenda</h2>
+
+      <MyTable values={products}></MyTable>
+
+      <input
+        placeholder={"ProdutoId"}
+        value={produtoId}
+        onChange={(event) => {
+          setProdutoId(event.target.value);
+        }}
+      />
+      <input
+        placeholder={"Quantidade"}
+        value={quantidade}
+        onChange={(event) => {
+          setQuantidade(event.target.value);
+        }}
+      />
+      <br></br>
+      <br></br>
+
+      <button onClick={handleEncomenda}>Registar Encomenda</button>
+    </>
+  );
+};
+export default CriarEncomenda;

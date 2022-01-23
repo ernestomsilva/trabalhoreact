@@ -1,24 +1,27 @@
-const Home=()=>{
-    
+const Home = () => {
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "10",
+        }}
+      >
+        <h1> Loja do ErnieMan </h1>
+      </div>
 
-    return(
-      <>
-        <head> 
-            <title>Loja Online ErnieMan</title>
-        </head>
-
-      
-        
-        <div >
-        <h1>HOME</h1>
-        </div>
-
-        <p> está é a home page do Site onde é possivel ver imagens</p>
-        <img src=".../img/gaja.jpg" alt="Texto alternativo" title="Avatar" />
-        </>
-       
-
-        
-    )
-}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          height: "10",
+        }}
+      >
+        <p> Está é a Home Page do Site, será colocado conteudo.</p>
+      </div>
+    </>
+  );
+};
 export default Home;

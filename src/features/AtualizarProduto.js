@@ -14,10 +14,10 @@ const AtualizarProduto = () => {
   const handleAtualizaProduto = async () => {
     const produto = {
       indice: indice,
+      nome: nome,
       categoria: categoria,
       descricao: descricao,
-      imagemUrl: imagemUrl,
-      nome: nome,
+      imagemUrl: imagemUrl,      
       preco: preco,
     };
 
@@ -76,7 +76,7 @@ const AtualizarProduto = () => {
       />
       <br></br>
       <br></br>
-      <Button variant="outline-primary" onClick={handleAtualizaProduto}>
+      <Button variant="primary" onClick={handleAtualizaProduto}>
         Atualiza Produto
       </Button>
     </>

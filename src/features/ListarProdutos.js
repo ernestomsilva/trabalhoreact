@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 import AtualizarProduto from "./AtualizarProduto";
-import CriarEncomenda from "./CriarEncomenda";
+
 import RegistarProduto from "./RegistarProduto";
 import Logout from "./Logout";
 
@@ -91,7 +91,7 @@ const ListarProdutos = () => {
       <br></br>
         <br></br> <br></br>
         <br></br>
-        <Logout></Logout>
+        
     </>
   );
 };
