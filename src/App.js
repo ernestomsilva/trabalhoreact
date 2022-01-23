@@ -16,6 +16,7 @@ import RegistarProduto from "./features/RegistarProduto";
 import ListarProdutos from "./features/ListarProdutos";
 import AtualizarProduto from "./features/AtualizarProduto";
 import CriarEncomenda from "./features/CriarEncomenda";
+import Logout from "./features/Logout";
 
 import { Nav } from "react-bootstrap";
 import Home from "./Home";
@@ -82,6 +83,12 @@ function App() {
                   Gestão de Produtos
                 </Nav.Link>
               </Nav.Item>
+
+              <Nav.Item>
+            <Nav.Link as={Link} eventKey="/" to="/">
+              Logout
+            </Nav.Link>
+          </Nav.Item>
             </>
           )}
         </Nav>
@@ -92,6 +99,7 @@ function App() {
           <Route path="/login" element={<LoginUser />}></Route>
           <Route path="/listarprodutos" element={<ListarProdutos />}></Route>
           <Route path="/criarencomenda" element={<CriarEncomenda />}></Route>
+          <Route path="/logout" element={<Logout />}></Route>
         </Routes>
       </IsLoggedInContext.Provider>
     </>

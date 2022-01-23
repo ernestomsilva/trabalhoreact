@@ -5,19 +5,33 @@ import MyTable from "../Layout/MyTable";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 import AtualizarProduto from "./AtualizarProduto";
 import CriarEncomenda from "./CriarEncomenda";
 import RegistarProduto from "./RegistarProduto";
+import Logout from "./Logout";
+
+
 const ListarProdutos = () => {
   const { listProducts } = requests;
   const { eliminarProduct } = requests;
   console.log("button");
 
-  const [categoria, setCategoria] = useState("");
-  const [descricao, setDescricao] = useState("");
+  
   const [nome, setNome] = useState("");
   const [indiceEliminar, setIndiceEliminar] = useState("");
+
   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+       
+    const fetchProdutos = async () => {
+        const products = await listProducts();
+        setProducts(products ?? []);
+        
+    };
+    fetchProdutos();
+}, [listProducts]);
 
   const handleIndiceEliminar = async () => {
     const result = await eliminarProduct(indiceEliminar);
@@ -38,7 +52,7 @@ const ListarProdutos = () => {
       <br></br>
       <br></br>
 
-      <ProductsContext.Provider value={{ products, setProducts }}>
+      
         <>
           <Button variant="primary" onClick={handleListarProdutos}>
             Listar Produtos
@@ -68,7 +82,7 @@ const ListarProdutos = () => {
         <Button variant="danger" onClick={handleIndiceEliminar}>
           Eliminar Produto
         </Button>
-        </ProductsContext.Provider>
+       
         <br></br>
         <br></br>
         <br></br>
@@ -77,6 +91,7 @@ const ListarProdutos = () => {
       <br></br>
         <br></br> <br></br>
         <br></br>
+        <Logout></Logout>
     </>
   );
 };
