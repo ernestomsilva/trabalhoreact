@@ -8,7 +8,7 @@
   //   fetchproducts();
   // }, [listProducts]);
 
-<Accordion defaultActiveKey="0">
+<!-- <Accordion defaultActiveKey="0">
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="0">
@@ -29,4 +29,4 @@
               <Card.Body>Hello! I'm another body</Card.Body>
             </Accordion.Collapse>
           </Card>
-        </Accordion>
+        </Accordion> -->

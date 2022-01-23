@@ -1,15 +1,19 @@
-import { useContext, useState } from "react";
-import { UsersContext } from "../user-context";
+import { useContext, createContext, useState } from "react";
+
 import requests from "../requests";
+import { IsLoggedInContext } from "../loggedin-context";
+//import { useContext, useState } from "react";
+import { UsersContext } from "../user-context";
 import { ProductsContext } from "../products-context";
 import { useNavigate } from "react-router-dom";
 
-
 const { loginUser } = requests;
 const LoginUser = () => {
+  const {isLoggedIn,setIsLoggedIn}=useContext(IsLoggedInContext);
   const { users, setUsers } = useContext(UsersContext);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+
   const navigate = useNavigate();
 
   const handleLoginUser = async () => {
@@ -20,6 +24,7 @@ const LoginUser = () => {
       //ListarProdutos();
       console.log(JSON.stringify(result.token));
       sessionStorage.setItem("token", result.token);
+      setIsLoggedIn(true);
       navigate("/");
     }
   };
