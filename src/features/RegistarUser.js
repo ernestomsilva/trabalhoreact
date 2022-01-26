@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
-import { UsersContext } from "../user-context";
+import { IsLoggedInContext } from "../loggedin-context";
+import { useNavigate } from "react-router-dom";
 import requests from "../requests";
 
 const CriarUtilizador = () => {
     const [nome, setNome] = useState("");
+    const {isLoggedIn,setIsLoggedIn}=useContext(IsLoggedInContext);
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const { createUser } = requests;
-  
+    const navigate = useNavigate();
     const handleAdicionaUtilizador = async () => {
       const novoUtilizador = { nome: nome, password: password, username: username };
      
@@ -15,7 +17,9 @@ const CriarUtilizador = () => {
       if (result) {
        
         console.log(JSON.stringify(result.token));
-        sessionStorage.setItem("token",result.token);      
+        sessionStorage.setItem("token",result.token);  
+        setIsLoggedIn(true);  
+        navigate("/");  
       }
     };
     return (

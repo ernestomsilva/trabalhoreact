@@ -21,8 +21,7 @@ const LoginUser = () => {
 
     const result = await loginUser(user);
     if (result) {
-      //ListarProdutos();
-      console.log(JSON.stringify(result.token));
+           
       sessionStorage.setItem("token", result.token);
       setIsLoggedIn(true);
       navigate("/");
