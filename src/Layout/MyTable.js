@@ -12,7 +12,7 @@ const MyTable = ({ values }) => {
 
   console.log("teste do nome");
   console.log(nome);
-
+//teste
   const filter = (e) => {
     const keyword = e.target.value;
 
