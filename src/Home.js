@@ -20,6 +20,7 @@ const Home = () => {
         }}
       >
         <p> Está é a Home Page do Site, será colocado conteudo.</p>
+       
       </div>
     </>
   );

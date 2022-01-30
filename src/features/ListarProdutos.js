@@ -5,33 +5,28 @@ import MyTable from "../Layout/MyTable";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 import AtualizarProduto from "./AtualizarProduto";
 
 import RegistarProduto from "./RegistarProduto";
 import Logout from "./Logout";
-
 
 const ListarProdutos = () => {
   const { listProducts } = requests;
   const { eliminarProduct } = requests;
   console.log("button");
 
-  
   const [nome, setNome] = useState("");
   const [indiceEliminar, setIndiceEliminar] = useState("");
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-       
     const fetchProdutos = async () => {
-        const products = await listProducts();
-        setProducts(products ?? []);
-        
+      const products = await listProducts();
+      setProducts(products ?? []);
     };
     fetchProdutos();
-}, [listProducts]);
+  }, [listProducts]);
 
   const handleIndiceEliminar = async () => {
     const result = await eliminarProduct(indiceEliminar);
@@ -48,11 +43,10 @@ const ListarProdutos = () => {
 
   return (
     <>
-      <h2>Lista de Produtos</h2>
-      <br></br>
-      <br></br>
-
-      
+      <ProductsContext.Provider value={{products, setProducts}}>
+        <h2>Lista de Produtos</h2>
+        <br></br>
+        <br></br>
         <>
           <Button variant="primary" onClick={handleListarProdutos}>
             Listar Produtos
@@ -61,11 +55,11 @@ const ListarProdutos = () => {
         <br></br>
         <br></br>
         {/* componente tabela */}
-        <MyTable values={products}></MyTable>
+        <MyTable></MyTable>
         <br></br>
         <br></br>
-    <RegistarProduto></RegistarProduto>
-    <br></br>
+        <RegistarProduto></RegistarProduto>
+        <br></br>
         <br></br>
         {/* eliminiar produto conforme o indice selecionado */}
         <h2 style={{ color: "red" }}>Eliminar Produtos</h2>
@@ -82,16 +76,15 @@ const ListarProdutos = () => {
         <Button variant="danger" onClick={handleIndiceEliminar}>
           Eliminar Produto
         </Button>
-       
         <br></br>
         <br></br>
         <br></br>
         <br></br>
-      <AtualizarProduto></AtualizarProduto>
-      <br></br>
+        <AtualizarProduto></AtualizarProduto>
+        <br></br>
         <br></br> <br></br>
         <br></br>
-        
+      </ProductsContext.Provider>
     </>
   );
 };

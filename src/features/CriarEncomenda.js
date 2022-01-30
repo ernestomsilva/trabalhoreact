@@ -12,7 +12,8 @@ const CriarEncomenda = () => {
   const [produtoId, setProdutoId] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const { createEncomenda } = requests;
-
+  
+const [products, setProducts]= useState([]);
   const handleEncomenda = async () => {
     const encomenda = { produtoId: produtoId, quantidade: quantidade };
 
@@ -23,8 +24,6 @@ const CriarEncomenda = () => {
   };
 
   console.log("button");
-
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProdutos = async () => {
@@ -37,9 +36,10 @@ const CriarEncomenda = () => {
   return (
     <>
       <h2>Lista de Produtos</h2>
-
-      {/* componente tabela */}
-      <MyTable values={products}></MyTable>
+      <ProductsContext.Provider value={{products,setProducts}}>
+        {/* componente tabela */}
+        <MyTable></MyTable>
+      </ProductsContext.Provider>
       <br></br>
       <br></br>
 
@@ -71,7 +71,7 @@ const MainPage = () => {
 
   return (
     <ProductsContext.Provider value={{ products, setProducts }}>
-      <MyTable values={products}></MyTable>
+      <MyTable></MyTable>
     </ProductsContext.Provider>
   );
 };

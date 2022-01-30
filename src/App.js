@@ -27,6 +27,10 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    if(sessionStorage.getItem("token")){
+
+      setIsLoggedIn(true);
+    }
     navigate("/");
   }, []);
 

@@ -1,49 +1,30 @@
 import { Table } from "react-bootstrap";
 import { useState, useContext } from "react";
+import { ProductsContext } from "../products-context";
 
 const MyTable = ({ values }) => {
   console.log("context test");
   console.log(values);
 
-  const [categoria, setCategoria] = useState("");
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
-  const [foundProducts, setFoundProducts] = useState(values);
+  const {products} = useContext(ProductsContext);
 
-  console.log("teste do nome");
+  
   console.log(nome);
-//teste
-  const filter = (e) => {
-    const keyword = e.target.value;
 
-    if (keyword) {
-      const results = values.filter((value) => {
-        if (e.target.name === "filterdescricao") {
-          return value.descricao.toLowerCase().includes(keyword.toLowerCase());
-          
-        }
-        else{
-          return value.nome.toLowerCase().startsWith(keyword.toLowerCase());
-        }
-      });
-
-      setFoundProducts(results);
-
-    } else {
-      setFoundProducts(values);
-      
-    }
-
-    if(e.target.name === "filterdescricao") {
-
-      setDescricao(keyword);
-    }
-    else{
-      setNome(keyword);
-    }
-
+  const filtrados=()=> {
+   return products
+    .filter( product =>{
+      return product.nome.includes(nome)
+    })
+    .filter(product =>{
+      return product.descricao.includes(descricao)
+    })
     
-  };
+    
+    
+  }
 
   return (
     <>
@@ -51,7 +32,8 @@ const MyTable = ({ values }) => {
         name="filternome"
         type="search"
         value={nome}
-        onChange={filter}
+        onChange={(event) => {
+          setNome(event.target.value)}}
         className="input"
         placeholder="Pesquisa por Nome"
       />
@@ -60,7 +42,8 @@ const MyTable = ({ values }) => {
         name="filterdescricao"
         type="search"
         value={descricao}
-        onChange={filter}
+        onChange={(event) => {
+        setDescricao(event.target.value)}}
         className="input"
         placeholder="Pesquisa por Descricao"
       />
@@ -78,14 +61,14 @@ const MyTable = ({ values }) => {
           </tr>
         </thead>
         <tbody>
-          {foundProducts.map((produto, indice) => {
+          {filtrados().map((produto, indice) => {
             return (
               <tr key={indice}>
                 <td>{produto.id}</td>
                 <td>{produto.nome}</td>
                 <td>{produto.categoria}</td>
                 <td>{produto.descricao}</td>
-                <td>{produto.imagemUrl}</td>
+                <td><img src={produto.imagemUrl} style={{height: 100, width: 100}}/></td>
                 <td>{produto.preco}</td>
                 <td>
                   <input type="checkbox" onClick="get"></input>
