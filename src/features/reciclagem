@@ -1,4 +1,6 @@
-
+products.find((p) => p.id === event.target.value)
+ 
+ 
  // useEffect(() => {
   //   const fetchproducts = async () => {
   //     const products = await listProducts();

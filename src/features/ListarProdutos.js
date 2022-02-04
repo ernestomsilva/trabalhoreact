@@ -4,7 +4,7 @@ import requests from "../requests";
 import MyTable from "../Layout/MyTable";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import EliminarProdutos from "./EliminarProdutos";
 import AtualizarProduto from "./AtualizarProduto";
 
 import RegistarProduto from "./RegistarProduto";
@@ -78,6 +78,7 @@ const ListarProdutos = () => {
         </Button>
         <br></br>
         <br></br>
+        <EliminarProdutos></EliminarProdutos>
         <br></br>
         <br></br>
         <AtualizarProduto></AtualizarProduto>

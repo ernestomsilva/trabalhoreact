@@ -1,15 +1,13 @@
 const MySelect = ({ selectedValue, values, onChange }) => {
-  
-  return (
+    return (
     <select value={selectedValue} onChange={onChange}>
       {[
         <option key={-1} value="-1">
           NOT SELECTED
         </option>,
-        ...values.map((product, id) => {
-          console.log(product.id)
+        ...values.map((product, index) => {
           return (
-            <option key={id} value={product?.id}>
+            <option key={index} value={product?.id}>
               {product?.id}
             </option>
           );
