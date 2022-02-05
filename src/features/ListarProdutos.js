@@ -61,21 +61,8 @@ const ListarProdutos = () => {
         <RegistarProduto></RegistarProduto>
         <br></br>
         <br></br>
-        {/* eliminiar produto conforme o indice selecionado */}
-        <h2 style={{ color: "red" }}>Eliminar Produtos</h2>
-        <input
-          placeholder="Insira Indice a Eliminar"
-          value={indiceEliminar}
-          onChange={(event) => {
-            setIndiceEliminar(event.target.value);
-          }}
-        />
-        <br></br>
-        <br></br>
-        {/* botão para eliminar */}
-        <Button variant="danger" onClick={handleIndiceEliminar}>
-          Eliminar Produto
-        </Button>
+       
+       
         <br></br>
         <br></br>
         <EliminarProdutos></EliminarProdutos>

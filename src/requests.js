@@ -62,7 +62,7 @@ const requests = {
  //atualizar Produtos
  updateProdut: async (produto) => {
   console.log(makeRequest.options)
-  return makeRequest(`${url}produto/${produto.indice}`, "PUT",produto);
+  return makeRequest(`${url}produto/${produto.id}`, "PUT",produto);
  },
   //Criar Encomenda
   createEncomenda: async (encomenda) => {
