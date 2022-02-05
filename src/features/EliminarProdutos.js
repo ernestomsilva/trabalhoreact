@@ -11,11 +11,11 @@ const EliminarProduto = () => {
   const {products, setProducts} = useContext(ProductsContext); 
   const [indiceEliminar, setIndiceEliminar]= useState("");
   const { eliminarProduct } = requests;
-  const [product, setProduct]=useState();
+  const [product, setProduct] = useState("");
   
   
   const handleIndiceEliminar = async () => {
-    console.log(product);
+    console.log("eliminar",product);
     if(product){
       console.log(product);
 
@@ -37,11 +37,12 @@ const EliminarProduto = () => {
         selectedValue={product?.id ?? "" }
         onChange={(event) => {
           setProduct(
-            products.filter((p => p.id === event.target.value))
+            products.find((p => p.id == event.target.value))
            
           );
           console.log(event.target.value)
           console.log("contexto",products)
+          console.log(product);
           console.log(product);
          
     
