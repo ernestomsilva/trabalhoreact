@@ -57,7 +57,7 @@ const MyTable = ({ values }) => {
             <th>Descricao</th>
             <th>Imagem</th>
             <th>Preço</th>
-            <th>Eliminar</th>
+           
           </tr>
         </thead>
         <tbody>
@@ -70,9 +70,7 @@ const MyTable = ({ values }) => {
                 <td>{produto.descricao}</td>
                 <td><img src={produto.imagemUrl} style={{height: 100, width: 100}}/></td>
                 <td>{produto.preco}</td>
-                <td>
-                  <input type="checkbox" onClick="get"></input>
-                </td>
+              
               </tr>
             );
           })}
