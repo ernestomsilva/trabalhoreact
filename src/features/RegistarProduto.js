@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { ProductsContext } from "../products-context";
 import requests from "../requests";
 
 const RegistarProduto = () => {
@@ -9,14 +10,15 @@ const RegistarProduto = () => {
     const [nome, setNome] = useState("");
     const [preco, setPreco] = useState("");
     const { createProdut } = requests;
-  
+    const {products, setProducts} = useContext(ProductsContext);
+
     const handleAdicionaProduto = async () => {
       const produto = { categoria: categoria, descricao: descricao,
         imagemUrl: imagemUrl, nome: nome, preco: preco  };
      
       const result = await createProdut(produto);
       if (result) {
-       
+       setProducts([...products,result]);
         console.log(JSON.stringify(result));
               
       }

@@ -12,14 +12,27 @@ const CriarEncomenda = () => {
   const [produtoId, setProdutoId] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const { createEncomenda } = requests;
-  
-const [products, setProducts]= useState([]);
-  const handleEncomenda = async () => {
-    const encomenda = { produtoId: produtoId, quantidade: quantidade };
 
-    const result = await createEncomenda(encomenda);
+  const [products, setProducts] = useState([]);
+  const [encomenda, setEncomenda] = useState([]);
+
+  const handleAdicionaProduto = async () => {
+    console.log("Adiciona produtos")
+    const linhaEncomenda = {
+      produtoId: Number(produtoId),
+      quantidade: Number(quantidade),
+    };
+    setEncomenda([...encomenda, linhaEncomenda]);
+    
+  };
+
+  const handleEncomenda = async () => {
+    const result = await createEncomenda({ linhas: encomenda });
+
     if (result) {
-      console.log(JSON.stringify(result));
+
+      setEncomenda([]);
+        console.log(result);
     }
   };
 
@@ -36,7 +49,7 @@ const [products, setProducts]= useState([]);
   return (
     <>
       <h2>Lista de Produtos</h2>
-      <ProductsContext.Provider value={{products,setProducts}}>
+      <ProductsContext.Provider value={{ products, setProducts }}>
         {/* componente tabela */}
         <MyTable></MyTable>
       </ProductsContext.Provider>
@@ -60,8 +73,31 @@ const [products, setProducts]= useState([]);
       />
       <br></br>
       <br></br>
-
+      <button onClick={handleAdicionaProduto}>Adicionar Produto</button>
       <button onClick={handleEncomenda}>Registar Encomenda</button>
+      <br></br>
+      <br></br>
+      <table>
+        <thead>
+          <tr>
+            <th>Indice</th>
+
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {encomenda.map((encomenda, index) => {
+            return (
+              <tr key={index}>
+                <td>{encomenda.produtoId}</td>
+
+                <td>{encomenda.quantidade}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </>
   );
 };
