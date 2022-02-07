@@ -51,11 +51,10 @@ const CriarEncomenda = () => {
       <h2>Lista de Produtos</h2>
       <ProductsContext.Provider value={{ products, setProducts }}>
         {/* componente tabela */}
-        <MyTable></MyTable>
+        <MyTable />
       </ProductsContext.Provider>
-      <br></br>
-      <br></br>
-
+     <br/>
+    <br/>
       <h2>Criar Encomenda</h2>
       <input
         placeholder={"ProdutoId"}
